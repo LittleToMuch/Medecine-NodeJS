@@ -13,6 +13,7 @@ router.post('/info/upload', upload.array('qustionFile', 3), function (req, res, 
     })
 })
 
+
 router.post('/info', function (req, res, next) {
     console.log(req.body.params);
     if (!req.body.params.id) {
@@ -52,8 +53,12 @@ router.post('/info', function (req, res, next) {
             res.send({ update: 1 })
         })
     }
+})
 
-
+router.get('/findOnly', function(req, res, next) {
+    questionModel.find({_id: req.query.id}).then(result => {
+        res.send(result[0])
+    })
 })
 
 router.delete('/info/delete', function (req, res, next) {

@@ -14,7 +14,8 @@ const model = mongoose.model('questions', new mongoose.Schema({
     chest:String,
     path:String,
     doctorId:Number,
-    userId:String
+    userId:String,
+    id:String
 }));
 
 module.exports = model
