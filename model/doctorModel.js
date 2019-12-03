@@ -8,7 +8,7 @@ const model = mongoose.model('doctor', new mongoose.Schema({
     introduction:String,
     level:String,
     price:Number,
-    pic:String
+    pic:String,
 }));
 
 module.exports = model
