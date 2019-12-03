@@ -17,6 +17,21 @@ router.put('/update', function (req, res, next) {
     })
 })
 
+router.put('/freeze', function (req, res, next) {
+  if(!req.body.freeze) {
+    userModel.updateOne({_id: req.body.id},{$set: {freeze: 1}}).then(result => {
+      console.log(result);
+      res.send(result)
+    })
+  }else {
+    userModel.updateOne({_id: req.body.id},{$set: {freeze: 0}}).then(result => {
+      console.log(result);
+      res.send(result)
+    })
+  }
+  
+})
+
 router.get('/list', function(req, res, next) {
   console.log('sasdasda');
   

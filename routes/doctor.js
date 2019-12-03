@@ -19,6 +19,15 @@ router.post('/upload', upload.single('avatar'), function (req, res, next) {
     res.send('http://localhost:8000/' + path)
 })
 
+router.post('/create', function(req, res, next) {
+    let {name, department, tags, introduction, level, price, pic} = req.body
+    console.log(name, department, tags, introduction, level, price, pic);
+    
+    doctorModel.create({name, department, tags, introduction, level, price, pic}).then(result => {
+        res.send(result)
+    })
+})
+
 router.post('/only', function (req, res, next) {
     doctorModel.find({ id: req.body.id }).then(result => {
         res.send(result)
